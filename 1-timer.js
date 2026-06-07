@@ -1,0 +1,2 @@
+import"./assets/modulepreload-polyfill-Dezn_h7o.js";/* empty css                      */import{t as e}from"./assets/vendor-DriqORxd.js";var t,n=document.querySelector(`input#datetime-picker`),r=document.querySelector(`button[data-start]`);e(n,{enableTime:!0,time_24hr:!0,defaultDate:new Date,dateFormat:`Y-m-d H:i`,minuteIncrement:1,onClose(e){t=e[0],r.removeAttribute(`disabled`)}}),document.addEventListener(`DOMContentLoaded`,()=>{r.setAttribute(`disabled`,``)}),r.addEventListener(`click`,()=>{Date.now()>t&&alert(`SHIIIIT`)});
+//# sourceMappingURL=1-timer.js.map
