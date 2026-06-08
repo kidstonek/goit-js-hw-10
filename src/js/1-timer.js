@@ -22,7 +22,8 @@ const options = {
             message: 'Please choose a date in the future',
             color: 'red',    
             position: 'topCenter',
-    });
+            });
+            buttonState.setAttribute('disabled', '');
             return
         }
         
@@ -32,9 +33,8 @@ const options = {
 
 flatpickr(timePicker, options);
 
-document.addEventListener('DOMContentLoaded', () => {
-    buttonState.setAttribute('disabled', '');
-});
+
+buttonState.setAttribute('disabled', '');
 
 
 buttonState.addEventListener('click', () => {
