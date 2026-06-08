@@ -8,6 +8,7 @@ let userSelectedDate;
 const timePicker = document.querySelector("input#datetime-picker");
 const buttonState = document.querySelector('button[data-start]');
 const myTimer = document.querySelectorAll('.field .value')
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -16,7 +17,7 @@ const options = {
   minuteIncrement: 1,
     onClose(selectedDates) {
         userSelectedDate = selectedDates[0];
-        if (userSelectedDate < Date.now()) {
+        if (userSelectedDate <= Date.now()) {
             iziToast.warning({
             message: 'Please choose a date in the future',
             color: 'red',    
@@ -24,6 +25,7 @@ const options = {
     });
             return
         }
+        
         buttonState.removeAttribute('disabled');
   },
 };
@@ -36,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 buttonState.addEventListener('click', () => {
+    const flickerSelector = document.querySelector('.flatpickr-input');
     buttonState.setAttribute('disabled', '');
+    flickerSelector.setAttribute('disabled', '');
     const intervalId = setInterval(() => {
         const finishDate = Date.now()
         const timeDiffirance = userSelectedDate - finishDate;
@@ -59,6 +63,7 @@ buttonState.addEventListener('click', () => {
                         })
             if (timeDiffirance <= 1000) {
                 clearInterval(intervalId);
+                flickerSelector.removeAttribute('disabled');
                 return
                 }
                         
@@ -87,14 +92,3 @@ function convertMs(ms) {
 }
 
 
-// console.log(myTimer)
-// myTimer.forEach((timePeriod, index) => {
-//     switch (index) {
-//         case 0:
-//             timePeriod.innerHTML = 22
-//             break
-//         case 1:
-//             console.log(timePeriod.innerHTML, index);
-//     }
-    
-// })
