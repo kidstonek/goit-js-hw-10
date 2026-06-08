@@ -44,6 +44,12 @@ buttonState.addEventListener('click', () => {
     const intervalId = setInterval(() => {
         const finishDate = Date.now()
         const timeDiffirance = userSelectedDate - finishDate;
+        if (timeDiffirance <= 1000) {
+            clearInterval(intervalId);
+            flickerSelector.removeAttribute('disabled');
+            myTimer.forEach(time => time.textContent = '00');
+            return
+        }
         let myAnswer = convertMs(timeDiffirance)
         myTimer.forEach((time, index) => {
             switch (index) {
@@ -61,11 +67,6 @@ buttonState.addEventListener('click', () => {
                                 break;
                             }
                         })
-            if (timeDiffirance <= 1000) {
-                clearInterval(intervalId);
-                flickerSelector.removeAttribute('disabled');
-                return
-                }
                         
     }, 1000)
  }
