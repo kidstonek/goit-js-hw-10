@@ -17,7 +17,6 @@ const options = {
     onClose(selectedDates) {
         userSelectedDate = selectedDates[0];
         if (userSelectedDate < Date.now()) {
-            // window.alert("Please choose a date in the future");
             iziToast.warning({
             message: 'Please choose a date in the future',
             color: 'red',    
@@ -63,7 +62,6 @@ buttonState.addEventListener('click', () => {
                 return
                 }
                         
-        // console.log(myAnswer.days.toString().padStart(2, "0"));
     }, 1000)
  }
 )
